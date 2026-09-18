@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link id="favicon" rel="icon" type="image/png" href="https://z-cdn-media.chatglm.cn/files/d93c73c4-e404-44f1-864c-80836d36ef18.png?auth_key=1889695505-63761a81d49546baaf92b3acc3ae98e6-0-8d26281acd279729e174822d468d1b74">
 <style>
 :root {
   --bg:#0b1020;--surface:#111a2e;--surface2:#18243d;
@@ -679,6 +680,29 @@ main{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:20px 24p
   applyTheme(currentTheme);
   renderCopyButtons();
   renderRecents();
+})();
+</script>
+
+<!-- Animated rotating favicon -->
+<script>
+(function(){
+  var img=new Image();
+  img.crossOrigin='anonymous';
+  img.src='https://z-cdn-media.chatglm.cn/files/81f1f99a-00ea-43e6-8499-0a674936a751.png?auth_key=1889694688-dc0e385526764ff1be07b09d759fe0ba-0-5edc12aaa196ba1e4ef2009320729743';
+  img.onload=function(){
+    var s=32,c=document.createElement('canvas');
+    c.width=c.height=s;
+    var x=c.getContext('2d'),a=0,link=document.getElementById('favicon');
+    (function loop(){
+      a+=0.06;
+      x.clearRect(0,0,s,s);
+      x.save();x.translate(s/2,s/2);x.rotate(a);
+      x.drawImage(img,-s/2,-s/2,s,s);
+      x.restore();
+      link.href=c.toDataURL('image/png');
+      requestAnimationFrame(loop);
+    })();
+  };
 })();
 </script>
 </body>
